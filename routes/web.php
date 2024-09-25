@@ -33,8 +33,8 @@ Route::get('/post', function () {
     return view('posts', $data);
 });
 
-Route::get('/post/{slug}', function ($slug) {
+Route::get('/post/{post:slug}', function (Post $post) {
     $data['title'] = 'POST';
-    $data['post'] = Post::find($slug);
+    $data['post'] = $post;
     return view('post', $data);
 });

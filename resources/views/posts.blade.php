@@ -20,13 +20,13 @@
                 @foreach ($posts as $post)
                 <div class="col-12 col-md-6">
                     <div class="py-2 border-bottom">
-                        <h2>{{ $post['title'] }}</h2>
+                        <h2>{{ $post->title }}</h2>
                         <div>
-                            <a href="#" class="text-decoration-none">{{ $post['author'] }}</a>
+                            <a href="#" class="text-decoration-none">{{ $post->author }}</a>
                             <span> | </span>
-                            <span>{{ $post['date'] }}</span>
+                            <span>{{ $post->updated_at->diffForHumans() }}</span>
                         </div>
-                        <p>{{ Str::limit($post['body'], 100) }}</p>
+                        <p>{{ Str::limit($post->body, 100) }}</p>
                         <a href="/post/{{ $post['slug'] }}" class="text-decoration-none">read more &raquo;</a>
                     </div>
                 </div>

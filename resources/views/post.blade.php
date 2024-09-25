@@ -19,14 +19,16 @@
             <div class="row">
                 <div class="col-12">
                     <div class="py-2 border-bottom">
-                        <h2>{{ $post['title'] }}</h2>
-                        <div>
-                            <a href="#" class="text-decoration-none">{{ $post['author'] }}</a>
+                        <h2>{{ $post->title }}</h2>
+                        <p>
+                            <a href="#" class="text-decoration-none">{{ $post->author }}</a>
                             <span> | </span>
-                            <span>{{ $post['date'] }}</span>
-                        </div>
-                        <p>{{ $post['body'] }}</p>
-                        <a href="/post" class="text-decoration-none">&laquo; see all posts</a>
+                            <span>{{ $post->updated_at->diffForHumans() }}</span>
+                        </p>
+                        <p class="text-justify">{!! nl2br(e($post->body)) !!}</p>
+                        <p>
+                            <a href="/post" class="text-decoration-none">&laquo; see all posts</a>
+                        </p>
                     </div>
                 </div>
             </div>
