@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md bg-body-tertiary">
+<nav class="navbar navbar-expand-sm bg-body-tertiary">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="#">LARAVEL11</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -17,7 +17,7 @@
 					<a class="nav-link {{ request()->is('contact') ? 'active fw-semibold' : '' }}" href="/contact">Contact</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link {{ request()->is('blog') ? 'active fw-semibold' : '' }}" href="/blog">Blog</a>
+					<a class="nav-link {{ request()->is('post') ? 'active fw-semibold' : '' }}" href="/post">Post</a>
 				</li>
 			</ul>
 		</div>
