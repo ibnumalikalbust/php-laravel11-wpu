@@ -5,30 +5,30 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 
-class UserFactory extends Factory
+class AuthorFactory extends Factory
 {
     protected static ?string $password;
 
     public function definition(): array
     {
         $name = fake()->name();
-        $unixName = preg_replace("/[^a-zA-Z]/", "", $name);
-        $unixName = substr($unixName, 0, 10);
-        $unixName = str_pad($unixName, 10, 'x');
-        $unixName = strtolower($unixName);
+        $slugName = preg_replace("/[^a-zA-Z]/", "", $name);
+        $slugName = substr($slugName, 0, 10);
+        $slugName = str_pad($slugName, 10, 'x');
+        $slugName = strtolower($slugName);
         $time = time();
-        $unixTime = strval($time);
-        $unixTime = substr($unixTime, -10);
-        $unixTime = str_pad($unixTime, 10, '0');
-        $unixTime = strtolower($unixTime);
-        $unix = $unixName . $unixTime;
+        $slugTime = strval($time);
+        $slugTime = substr($slugTime, -10);
+        $slugTime = str_pad($slugTime, 10, '0');
+        $slugTime = strtolower($slugTime);
+        $slug = $slugName . $slugTime;
         $email = fake()->unique()->safeEmail();
         $phone = fake()->unique()->phoneNumber();
         $phone = preg_replace('/[^0-9]/', '', $phone);
         $phone = ($phone[0] === '0') ? '62' . substr($phone, 1) : $phone;
         $password = static::$password ??= Hash::make('password');
         return [
-            'unix' => $unix,
+            'slug' => $slug,
             'name' => $name,
             'email' => $email,
             'phone' => $phone,

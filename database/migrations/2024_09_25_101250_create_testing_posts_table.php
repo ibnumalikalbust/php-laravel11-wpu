@@ -17,9 +17,9 @@ return new class extends Migration
             $table->integer('last_activity')->index();
         });
 
-        Schema::create('testing_users', function (Blueprint $table) {
+        Schema::create('testing_authors', function (Blueprint $table) {
             $table->id();
-            $table->string('unix')->unique();
+            $table->string('slug')->unique();
             $table->string('name')->unique();
             $table->string('email')->unique();
             $table->string('phone')->unique();
@@ -28,22 +28,22 @@ return new class extends Migration
             $table->softDeletesTz();
         });
 
-        Schema::create('testing_category', function (Blueprint $table) {
+        Schema::create('testing_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->string('slug')->unique();
+            $table->string('name');
             $table->timestamps();
             $table->softDeletesTz();
         });
 
         Schema::create('testing_posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
             $table->string('slug')->unique();
+            $table->string('title');
             $table->string('author');
-            $table->foreign('author')->references('unix')->on('testing_users');
+            $table->foreign('author')->references('slug')->on('testing_authors');
             $table->string('category');
-            $table->foreign('category')->references('slug')->on('testing_category');
+            $table->foreign('category')->references('slug')->on('testing_categories');
             $table->text('body');
             $table->timestampsTz();
             $table->softDeletesTz();
@@ -53,7 +53,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('testing_authors');
+        Schema::dropIfExists('testing_categories');
         Schema::dropIfExists('testing_posts');
-        Schema::dropIfExists('testing_users');
     }
 };

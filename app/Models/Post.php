@@ -15,7 +15,7 @@ class Post extends Model
 
     public function authorDetail(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'author', 'unix');
+        return $this->belongsTo(Author::class, 'author', 'slug');
     }
 
     public function categoryDetail(): BelongsTo

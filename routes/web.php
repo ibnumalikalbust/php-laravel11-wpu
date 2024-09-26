@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\Post;
-use App\Models\User;
+use App\Models\Author;
 use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -30,25 +30,25 @@ Route::get('/contact', function () {
 });
 
 Route::get('/post', function () {
-    $data['title'] = 'POSTS';
+    $data['title'] = 'All Post';
     $data['posts'] = Post::all();
     return view('posts', $data);
 });
 
 Route::get('/post/{post:slug}', function (Post $post) {
-    $data['title'] = 'POST';
+    $data['title'] = 'Post Detail';
     $data['post'] = $post;
     return view('post', $data);
 });
 
-Route::get('/author/{user:unix}', function (User $user) {
-    $data['title'] = 'POSTS';
-    $data['posts'] = $user->postsList;
+Route::get('/author/{author:slug}', function (Author $author) {
+    $data['title'] = count($author->postsList) . ' Post By ' . $author->name;
+    $data['posts'] = $author->postsList;
     return view('posts', $data);
 });
 
 Route::get('/category/{category:slug}', function (Category $category) {
-    $data['title'] = 'POSTS';
+    $data['title'] = count($category->postsList) . ' Post In ' . $category->name;
     $data['posts'] = $category->postsList;
     return view('posts', $data);
 });

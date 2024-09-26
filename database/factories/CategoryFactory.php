@@ -10,11 +10,11 @@ class CategoryFactory extends Factory
 {
     public function definition(): array
     {
-        $name = fake()->sentence(3);
+        $name = fake()->word() . ' ' . fake()->word();
         $slug = Str::slug($name);
         return [
-            'name' => $name,
             'slug' => $slug,
+            'name' => $name,
         ];
     }
 }
