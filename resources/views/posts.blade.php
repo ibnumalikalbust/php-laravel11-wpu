@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 @foreach ($posts as $post)
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-6 col-xxl-4">
                     <div class="py-2 border-bottom">
                         <h2>{{ $post->title }}</h2>
                         <div>
