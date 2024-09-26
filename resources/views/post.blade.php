@@ -22,6 +22,8 @@
                         <h2>{{ $post->title }}</h2>
                         <p>
                             <a href="/author/{{ $post->author }}" class="text-decoration-none">{{ $post->authorDetail->name }}</a>
+                            <span> in </span>
+                            <a href="/category/{{ $post->category }}" class="text-decoration-none">{{ $post->categoryDetail->name }}</a>
                             <span> | </span>
                             <span>{{ $post->updated_at->diffForHumans() }}</span>
                         </p>

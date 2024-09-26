@@ -28,12 +28,22 @@ return new class extends Migration
             $table->softDeletesTz();
         });
 
+        Schema::create('testing_category', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->timestamps();
+            $table->softDeletesTz();
+        });
+
         Schema::create('testing_posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
             $table->string('author');
             $table->foreign('author')->references('unix')->on('testing_users');
+            $table->string('category');
+            $table->foreign('category')->references('slug')->on('testing_category');
             $table->text('body');
             $table->timestampsTz();
             $table->softDeletesTz();
