@@ -2,10 +2,10 @@
 
 namespace Database\Factories;
 
+use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Author;
 use App\Models\Category;
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PostFactory extends Factory
 {
