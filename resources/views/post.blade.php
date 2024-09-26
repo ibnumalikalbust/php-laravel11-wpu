@@ -21,7 +21,7 @@
                     <div class="py-2 border-bottom">
                         <h2>{{ $post->title }}</h2>
                         <p>
-                            <a href="#" class="text-decoration-none">{{ $post->author }}</a>
+                            <a href="/author/{{ $post->author }}" class="text-decoration-none">{{ $post->authorDetail->name }}</a>
                             <span> | </span>
                             <span>{{ $post->updated_at->diffForHumans() }}</span>
                         </p>

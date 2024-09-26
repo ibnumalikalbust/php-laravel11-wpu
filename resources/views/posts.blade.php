@@ -22,12 +22,12 @@
                     <div class="py-2 border-bottom">
                         <h2>{{ $post->title }}</h2>
                         <div>
-                            <a href="#" class="text-decoration-none">{{ $post->author }}</a>
+                            <a href="/author/{{ $post->author }}" class="text-decoration-none">{{ $post->authorDetail->name }}</a>
                             <span> | </span>
                             <span>{{ $post->updated_at->diffForHumans() }}</span>
                         </div>
                         <p>{{ Str::limit($post->body, 100) }}</p>
-                        <a href="/post/{{ $post['slug'] }}" class="text-decoration-none">read more &raquo;</a>
+                        <a href="/post/{{ $post->slug }}" class="text-decoration-none">read more &raquo;</a>
                     </div>
                 </div>
                 @endforeach

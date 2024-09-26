@@ -23,12 +23,28 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $name = fake()->name();
+        $unixName = preg_replace("/[^a-zA-Z]/", "", $name);
+        $unixName = substr($unixName, 0, 10);
+        $unixName = str_pad($unixName, 10, 'x');
+        $unixName = strtolower($unixName);
+        $time = time();
+        $unixTime = strval($time);
+        $unixTime = substr($unixTime, -10);
+        $unixTime = str_pad($unixTime, 10, '0');
+        $unixTime = strtolower($unixTime);
+        $unix = $unixName . $unixTime;
+        $email = fake()->unique()->safeEmail();
+        $phone = fake()->unique()->phoneNumber();
+        $phone = preg_replace('/[^0-9]/', '', $phone);
+        $phone = ($phone[0] === '0') ? '62' . substr($phone, 1) : $phone;
+        $password = static::$password ??= Hash::make('password');
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
-            'remember_token' => Str::random(10),
+            'unix' => $unix,
+            'name' => $name,
+            'email' => $email,
+            'phone' => $phone,
+            'password' => $password,
         ];
     }
 
