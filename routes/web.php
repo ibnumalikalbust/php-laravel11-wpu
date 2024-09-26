@@ -31,7 +31,7 @@ Route::get('/contact', function () {
 
 Route::get('/post', function () {
     $data['title'] = 'All Post';
-    $data['posts'] = Post::with(['authorDetail','categoryDetail'])->get();
+    $data['posts'] = Post::all();
     return view('posts', $data);
 });
 
@@ -43,12 +43,12 @@ Route::get('/post/{post:slug}', function (Post $post) {
 
 Route::get('/author/{author:slug}', function (Author $author) {
     $data['title'] = count($author->postsList) . ' Post By ' . $author->name;
-    $data['posts'] = $author->postsList->load('authorDetail','categoryDetail');
+    $data['posts'] = $author->postsList;
     return view('posts', $data);
 });
 
 Route::get('/category/{category:slug}', function (Category $category) {
     $data['title'] = count($category->postsList) . ' Post In ' . $category->name;
-    $data['posts'] = $category->postsList->load('authorDetail','categoryDetail');
+    $data['posts'] = $category->postsList;
     return view('posts', $data);
 });

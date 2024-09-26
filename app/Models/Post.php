@@ -12,6 +12,7 @@ class Post extends Model
     
     protected $table = 'testing_posts';
     protected $fillable = ['title', 'slug', 'author', 'category', 'body'];
+    protected $with = ['authorDetail', 'categoryDetail'];
 
     public function authorDetail(): BelongsTo
     {
