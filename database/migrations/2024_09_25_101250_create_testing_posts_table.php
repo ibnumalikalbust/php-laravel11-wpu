@@ -20,11 +20,11 @@ return new class extends Migration
         Schema::create('testing_authors', function (Blueprint $table) {
             $table->id();
             $table->string('slug')->unique();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('email')->unique();
             $table->string('phone')->unique();
             $table->string('password');
-            $table->timestamps();
+            $table->timestampsTz();
             $table->softDeletesTz();
         });
 
@@ -32,7 +32,7 @@ return new class extends Migration
             $table->id();
             $table->string('slug')->unique();
             $table->string('name');
-            $table->timestamps();
+            $table->timestampsTz();
             $table->softDeletesTz();
         });
 
