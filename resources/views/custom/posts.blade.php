@@ -26,7 +26,7 @@
                             @if(request('category'))
                             <input type="hidden" name="category" value="{{ request('category') }}">
                             @endif
-                            <input type="text" name="keyword" class="form-control" placeholder="Search for article...">
+                            <input type="text" name="keyword" class="form-control" placeholder="Search for article..." value="{{ request('keyword') ?? '' }}">
                             <button class="btn btn-outline-secondary" type="submit">SEARCH</button>
                         </div>
                     </form>
@@ -38,7 +38,7 @@
         <div class="container">
             <div class="row">
                 <div class="col my-2">
-                    {{ $posts->links() }}
+                    {{ $posts->onEachSide(1)->links() }}
                 </div>
             </div>
             <div class="row">
@@ -68,7 +68,7 @@
             </div>
             <div class="row">
                 <div class="col my-2">
-                    {{ $posts->links() }}
+                    {{ $posts->onEachSide(1)->links() }}
                 </div>
             </div>
         </div>
