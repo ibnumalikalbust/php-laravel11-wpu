@@ -4,18 +4,18 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('custom/welcome');
 });
 
 Route::get('/home', function () {
     $data['title'] = 'HOME';
-    return view('home', $data);
+    return view('custom/home', $data);
 });
 
 Route::get('/about', function () {
     $data['title'] = 'ABOUT';
     $data['developer'] = 'Habibullah';
-    return view('about', $data);
+    return view('custom/about', $data);
 });
 
 Route::get('/contact', function () {
@@ -24,17 +24,17 @@ Route::get('/contact', function () {
     $data['instagram'] = 'https://instagram.com/ibnumalikalbust';
     $data['twitter'] = 'https://twitter.com/ibnumalikalbust';
     $data['tiktok'] = 'https://tiktok.com/@ibnumalikalbust';
-    return view('contact', $data);
+    return view('custom/contact', $data);
 });
 
 Route::get('/posts', function () {
     $data['title'] = 'All Post';
     $data['posts'] = Post::filter(request(['keyword','author','category']))->paginate(12)->withQueryString();
-    return view('posts', $data);
+    return view('custom/posts', $data);
 });
 
 Route::get('/read/{post:slug}', function (Post $post) {
     $data['title'] = 'Post Detail';
     $data['post'] = $post;
-    return view('read', $data);
+    return view('custom/read', $data);
 });
