@@ -17,7 +17,7 @@
                     <a class="nav-link {{ request()->is('contact') ? 'active fw-semibold' : '' }}" href="/contact">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('post') ? 'active fw-semibold' : '' }}" href="/post">Post</a>
+                    <a class="nav-link {{ request()->is('posts') ? 'active fw-semibold' : '' }}" href="/posts">Posts</a>
                 </li>
             </ul>
         </div>

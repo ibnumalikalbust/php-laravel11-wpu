@@ -29,26 +29,14 @@ Route::get('/contact', function () {
     return view('contact', $data);
 });
 
-Route::get('/post', function () {
+Route::get('/posts', function () {
     $data['title'] = 'All Post';
-    $data['posts'] = Post::all();
+    $data['posts'] = Post::filter(request(['keyword','author','category']))->get();
     return view('posts', $data);
 });
 
-Route::get('/post/{post:slug}', function (Post $post) {
+Route::get('/read/{post:slug}', function (Post $post) {
     $data['title'] = 'Post Detail';
     $data['post'] = $post;
-    return view('post', $data);
-});
-
-Route::get('/author/{author:slug}', function (Author $author) {
-    $data['title'] = count($author->postsList) . ' Post By ' . $author->name;
-    $data['posts'] = $author->postsList;
-    return view('posts', $data);
-});
-
-Route::get('/category/{category:slug}', function (Category $category) {
-    $data['title'] = count($category->postsList) . ' Post In ' . $category->name;
-    $data['posts'] = $category->postsList;
-    return view('posts', $data);
+    return view('read', $data);
 });
