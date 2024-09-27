@@ -21,15 +21,15 @@
                     <div class="py-2 border-bottom">
                         <h2>{{ $post->title }}</h2>
                         <p>
-                            <a href="/posts?author={{ $post->author }}" class="text-decoration-none">{{ $post->authorDetail->name }}</a>
+                            <a href="{{ url('/posts') . '?author=' . $post->author }}" class="text-decoration-none">{{ $post->authorDetail->name }}</a>
                             <span> in </span>
-                            <a href="/posts?category={{ $post->category }}" class="text-decoration-none">{{ $post->categoryDetail->name }}</a>
+                            <a href="{{ url('/posts') . '?category=' . $post->category }}" class="text-decoration-none">{{ $post->categoryDetail->name }}</a>
                             <span> | </span>
                             <span>{{ $post->updated_at->diffForHumans() }}</span>
                         </p>
                         <p class="text-justify">{!! nl2br(e($post->body)) !!}</p>
                         <p>
-                            <a href="/posts" class="text-decoration-none">&laquo; see all posts</a>
+                            <a href="{{ url('/posts') }}" class="text-decoration-none">&laquo; see all posts</a>
                         </p>
                     </div>
                 </div>

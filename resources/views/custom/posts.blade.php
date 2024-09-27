@@ -47,14 +47,14 @@
                     <div class="py-2 border-bottom">
                         <h2>{{ $post->title }}</h2>
                         <div>
-                            <a href="/posts?author={{ $post->author }}" class="text-decoration-none">{{ $post->authorDetail->name }}</a>
+                            <a href="{{ url('/posts') . '?author=' . $post->author }}" class="text-decoration-none">{{ $post->authorDetail->name }}</a>
                             <span> in </span>
-                            <a href="/posts?category={{ $post->category }}" class="text-decoration-none">{{ $post->categoryDetail->name }}</a>
+                            <a href="{{ url('/posts') . '?category=' . $post->category }}" class="text-decoration-none">{{ $post->categoryDetail->name }}</a>
                             <span> | </span>
                             <span>{{ $post->updated_at->diffForHumans() }}</span>
                         </div>
                         <p>{{ Str::limit($post->body, 100) }}</p>
-                        <a href="/read/{{ $post->slug }}" class="text-decoration-none">read more &raquo;</a>
+                        <a href="{{ url('/read') . '/' . $post->slug }}" class="text-decoration-none">read more &raquo;</a>
                     </div>
                 </div>
                 @empty

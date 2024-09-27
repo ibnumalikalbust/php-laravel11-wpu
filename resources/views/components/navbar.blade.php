@@ -8,16 +8,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('home') ? 'active fw-semibold' : '' }}" href="/home">Home</a>
+                    <a class="nav-link {{ request()->is('home') ? 'active fw-semibold' : '' }}" href="{{ url('/home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('about') ? 'active fw-semibold' : '' }}" href="/about">About</a>
+                    <a class="nav-link {{ request()->is('about') ? 'active fw-semibold' : '' }}" href="{{ url('/about') }}">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('contact') ? 'active fw-semibold' : '' }}" href="/contact">Contact</a>
+                    <a class="nav-link {{ request()->is('contact') ? 'active fw-semibold' : '' }}" href="{{ url('/contact') }}">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('posts') ? 'active fw-semibold' : '' }}" href="/posts">Posts</a>
+                    <a class="nav-link {{ request()->is('posts') ? 'active fw-semibold' : '' }}" href="{{ url('/posts') }}">Posts</a>
                 </li>
             </ul>
         </div>
