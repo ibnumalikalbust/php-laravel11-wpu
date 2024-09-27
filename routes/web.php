@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\Author;
-use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
@@ -31,7 +29,7 @@ Route::get('/contact', function () {
 
 Route::get('/posts', function () {
     $data['title'] = 'All Post';
-    $data['posts'] = Post::filter(request(['keyword','author','category']))->get();
+    $data['posts'] = Post::filter(request(['keyword','author','category']))->paginate(12)->withQueryString();
     return view('posts', $data);
 });
 

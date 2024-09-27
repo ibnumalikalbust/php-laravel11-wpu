@@ -37,6 +37,11 @@
     <article class="my-3">
         <div class="container">
             <div class="row">
+                <div class="col my-2">
+                    {{ $posts->links() }}
+                </div>
+            </div>
+            <div class="row">
                 @forelse ($posts as $post)
                 <div class="col-12 col-md-6 col-xxl-4">
                     <div class="py-2 border-bottom">
@@ -60,6 +65,11 @@
                     </p>
                 </div>
                 @endforelse
+            </div>
+            <div class="row">
+                <div class="col my-2">
+                    {{ $posts->links() }}
+                </div>
             </div>
         </div>
     </article>
